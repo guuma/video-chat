@@ -28,9 +28,9 @@ io.on('connection', (socket) => {
     socket.to(roomId).broadcast.emit('user-connected', userId);
     console.log(userId);
     socket.on('message', (message) => {
-      io.to(roomId).emit('createMessage', message)
-    })
+      io.to(roomId).emit('createMessage', message);
+    });
   });
 });
 
-server.listen(3030);
+server.listen(process.env.PORT || 3030);

@@ -22,11 +22,11 @@ navigator.mediaDevices
     addVideoStream(myVideo, stream);
 
     peer.on('call', (call) => {
-      call.answer(stream)
-      const video = document.createElement('video')
-      call.on('stream', userVideoStream => {
-        addVideoStream(video, userVideoStream)
-      })
+      call.answer(stream);
+      const video = document.createElement('video');
+      call.on('stream', (userVideoStream) => {
+        addVideoStream(video, userVideoStream);
+      });
     });
 
     socket.on('user-connected', (userId) => {
@@ -54,3 +54,30 @@ const addVideoStream = (video, stream) => {
   });
   videoGrid.append(video);
 };
+
+let text = $('input');
+
+$('html').keydown((e) => {
+  if (e.which == 13 && text.val().length !== 0) {
+    console.log(text.val());
+    socket.emit('message', text.val());
+    text.val('');
+  }
+});
+
+socket.on('createMessage', (message) => {
+  $('ul').append(
+    `<li class='message'>
+        <b>以下、名無しにかわりましてVIPがお送りします</b></br>
+        ${message}
+      </li>`
+  );
+  scrollToBottom();
+});
+
+const scrollToBottom = () => {
+  let ele = $('.main__chat_window');
+  ele.scrollTop(ele.prop('scrollHeight'));
+};
+
+

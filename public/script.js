@@ -60,9 +60,9 @@ let textcount = 0
 
 $('html').keydown((e) => {
   if (e.which == 13 && text.val().length !== 0) {
+    textcount++;
     socket.emit('message', text.val(), textcount);
     text.val('');
-    textcount++
   }
 });
 

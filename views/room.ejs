@@ -41,11 +41,11 @@
         </div>
         <div class="main__controls">
           <div class="main__controls__block">
-            <div class="main__controls__button">
+            <div class="main__controls__button main__mute_button" onclick="muteUnmute()">
               <i class="fas fa-microphone"></i>
               <span>Mute</span>
             </div>
-            <div class="main__controls__button">
+            <div class="main__controls__button main__video_button" onclick="playStop()">
               <i class="fas fa-video"></i>
               <span>Stop Video</span>
             </div>
@@ -59,7 +59,7 @@
               <i class="fas fa-user-friends"></i>
               <span>Participants</span>
             </div>
-            <div class="main__controls__button">
+            <div class="main__controls__button" onclick="chattoggle()">
               <i class="fas fa-comment-alt"></i>
               <span>Chat</span>
             </div>
@@ -73,7 +73,7 @@
       </div>
       <div class="main__right">
         <div class="main__header">
-          <h6>Chat</h6>
+          <!-- <h6>Chat</h6> -->
         </div>
         <div class="main__chat_window">
           <ul class="messages"></ul>
